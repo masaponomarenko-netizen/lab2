@@ -1,0 +1,30 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# Visual Studio
+.vs/
+.vscode/
+
+# MAUI / Apple
+*.app
+*.ipa
+*.apk
+*.aab
+*.dSYM/
+
+# macOS
+.DS_Store
+
+# Локальні логи та тимчасові файли
+*.log
+*.tmp

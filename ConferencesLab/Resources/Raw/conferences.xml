@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<conferences>
+  <conference id="CONF-001"
+              title="Інженерія програмного забезпечення 2026"
+              category="Software Engineering"
+              format="offline"
+              fee="1200"
+              currency="UAH"
+              website="https://se-conf.org.ua">
+    <dates start="2026-03-12" end="2026-03-14" />
+    <topic>Архітектура програмних систем, тестування та DevOps</topic>
+    <organizer>НТУУ «КПІ ім. Ігоря Сікорського»</organizer>
+    <venue city="Київ" country="Україна">КПІ, корпус 18</venue>
+    <submission deadline="2026-01-20" />
+    <contact email="se2026@kpi.ua" />
+  </conference>
+
+  <conference id="CONF-002"
+              title="Artificial Intelligence &amp; Data Science Summit"
+              category="Artificial Intelligence"
+              language="English">
+    <dates start="2026-04-07" end="2026-04-09" />
+    <topic>Generative AI, комп'ютерний зір і великі мовні моделі</topic>
+    <organizer>AI Ukraine Association</organizer>
+    <venue city="Львів" country="Україна">Lviv IT Cluster, вул. Сахарова 2</venue>
+    <submission deadline="2026-02-01" />
+    <contact email="summit@ai-ukraine.org" />
+  </conference>
+
+  <conference id="CONF-003"
+              title="Кібербезпека критичної інфраструктури"
+              category="Cybersecurity"
+              fee="90"
+              currency="EUR"
+              seats="250">
+    <dates start="2026-05-19" end="2026-05-21" />
+    <topic>Захист АСУ ТП, реагування на інциденти, Zero Trust</topic>
+    <organizer>Державний центр кіберзахисту</organizer>
+    <venue city="Київ" country="Україна">НСК «Олімпійський», конференц-зал</venue>
+    <submission deadline="2026-03-10" />
+  </conference>
+
+  <conference id="CONF-004"
+              title="Cloud &amp; DevOps Days Ukraine"
+              category="Cloud Computing"
+              format="hybrid"
+              language="Ukrainian"
+              website="https://devops-days.ua">
+    <dates start="2026-06-02" end="2026-06-03" />
+    <topic>Kubernetes, платформна інженерія, спостережуваність</topic>
+    <organizer>DevOps Ukraine Community</organizer>
+    <venue city="Дніпро" country="Україна">Dnipro Innovation Hub</venue>
+    <submission deadline="2026-04-15" />
+    <contact email="team@devops-days.ua" />
+  </conference>
+
+  <conference id="CONF-005"
+              title="Цифрова освіта: виклики та рішення"
+              category="Education"
+              fee="600"
+              currency="UAH">
+    <dates start="2026-06-18" end="2026-06-19" />
+    <topic>Змішане навчання, LMS, оцінювання компетентностей</topic>
+    <organizer>Міністерство освіти і науки України</organizer>
+    <venue city="Вінниця" country="Україна">Вінницький державний педагогічний університет</venue>
+    <submission deadline="2026-05-01" />
+  </conference>
+
+  <conference id="CONF-006"
+              title="Biomedical Engineering World Congress"
+              category="Biomedical Engineering"
+              format="offline"
+              fee="150"
+              currency="USD"
+              language="English"
+              seats="180"
+              website="https://bme-world.org">
+    <dates start="2026-07-06" end="2026-07-10" />
+    <topic>Медична візуалізація, біоніка, телемедицина</topic>
+    <organizer>Global BME Society</organizer>
+    <venue city="Одеса" country="Україна">Одеський національний медичний університет</venue>
+    <submission deadline="2026-03-31" />
+    <contact email="office@bme-world.org" />
+  </conference>
+
+  <conference id="CONF-007"
+              title="Розумні міста та сталий розвиток"
+              category="Urban Studies"
+              language="Ukrainian"
+              fee="750">
+    <dates start="2026-08-11" end="2026-08-13" />
+    <topic>Міська мобільність, цифрові двійники, енергоефективність</topic>
+    <organizer>Інститут міських досліджень</organizer>
+    <venue city="Харків" country="Україна">Kharkiv Smart City Lab</venue>
+    <submission deadline="2026-06-01" />
+  </conference>
+
+  <conference id="CONF-008"
+              title="Robotics Expo 2026"
+              category="Robotics"
+              format="online"
+              seats="500">
+    <dates start="2026-09-15" end="2026-09-16" />
+    <topic>Автономні роботи, дрони, промислова автоматизація</topic>
+    <organizer>Ukrainian Robotics Association</organizer>
+    <venue city="Запоріжжя" country="Україна">Онлайн-платформа ExpoHub</venue>
+    <submission deadline="2026-07-20" />
+    <contact email="info@robotics-expo.ua" />
+  </conference>
+
+  <conference id="CONF-009"
+              title="FinTech Innovation Forum"
+              category="Finance"
+              fee="200"
+              currency="EUR"
+              website="https://fintech-forum.ua"
+              language="English">
+    <dates start="2026-10-06" end="2026-10-08" />
+    <topic>Відкритий банкінг, блокчейн, регуляторні технології</topic>
+    <organizer>Ukrainian FinTech Council</organizer>
+    <venue city="Київ" country="Україна">Unit City, корпус B12</venue>
+    <submission deadline="2026-08-01" />
+    <contact email="hello@fintech-forum.ua" />
+  </conference>
+
+  <conference id="CONF-010"
+              title="Екологія та кліматичні технології"
+              category="Ecology"
+              format="hybrid">
+    <dates start="2026-11-17" end="2026-11-18" />
+    <topic>Моніторинг довкілля, відновлювана енергетика, ESG</topic>
+    <organizer>Національний екологічний центр</organizer>
+    <venue city="Чернівці" country="Україна">Чернівецький національний університет</venue>
+    <submission deadline="2026-09-15" />
+  </conference>
+</conferences>

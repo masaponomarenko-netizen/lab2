@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConferencesLab.MainPage"
+             Title="Конференції"
+             BackgroundColor="#F3F6FB">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="24" RowSpacing="16">
+
+        
+        <Border Grid.Row="0"
+                Padding="22,18"
+                BackgroundColor="#1C2A52"
+                StrokeThickness="0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="18" />
+            </Border.StrokeShape>
+
+            <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="10">
+                <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+                    <Label Text="Наукові конференції"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="White" />
+                    <Label Text="Лабораторна робота №2 · SAX / DOM / LINQ to XML · XSLT → HTML"
+                           FontSize="13"
+                           TextColor="#B9C6E6" />
+                </VerticalStackLayout>
+
+                <Button Grid.Column="1"
+                        Text="Обрати XML…"
+                        Command="{Binding PickFileCommand}"
+                        BackgroundColor="#2F5BEA"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="42"
+                        Padding="16,0" />
+
+                <Button Grid.Column="2"
+                        Text="Приклад XML"
+                        Command="{Binding LoadSampleCommand}"
+                        BackgroundColor="#33456F"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="42"
+                        Padding="16,0" />
+
+                <Button Grid.Column="3"
+                        Text="Вихід"
+                        Command="{Binding ExitCommand}"
+                        BackgroundColor="#B53A4A"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="42"
+                        Padding="16,0" />
+            </Grid>
+        </Border>
+
+        
+        <Border Grid.Row="1"
+                Padding="20,16"
+                BackgroundColor="White"
+                Stroke="#DFE5EF"
+                StrokeThickness="1">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="14" />
+            </Border.StrokeShape>
+
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Параметри пошуку"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="#172033" />
+
+                <Grid ColumnDefinitions="170,*"
+                      RowDefinitions="Auto,Auto,Auto,Auto"
+                      RowSpacing="8"
+                      ColumnSpacing="14">
+
+                    <Label Grid.Row="0" Text="Стратегія пошуку" VerticalOptions="Center" TextColor="#5B6780" />
+                    <Picker Grid.Row="0"
+                            Grid.Column="1"
+                            HeightRequest="40"
+                            FontSize="14"
+                            TextColor="#172033"
+                            TitleColor="#8A94A8"
+                            BackgroundColor="#F8FAFD"
+                            Title="Оберіть стратегію"
+                            ItemsSource="{Binding Strategies}"
+                            SelectedItem="{Binding SelectedStrategy}" />
+
+                    <Label Grid.Row="1" Text="Атрибут" VerticalOptions="Center" TextColor="#5B6780" />
+                    <Picker Grid.Row="1"
+                            Grid.Column="1"
+                            HeightRequest="40"
+                            FontSize="14"
+                            TextColor="#172033"
+                            TitleColor="#8A94A8"
+                            BackgroundColor="#F8FAFD"
+                            IsEnabled="{Binding HasDocument}"
+                            Title="Спочатку завантажте XML"
+                            ItemsSource="{Binding AttributeNames}"
+                            SelectedItem="{Binding SelectedAttribute}" />
+
+                    <Label Grid.Row="2" Text="Значення" VerticalOptions="Center" TextColor="#5B6780" />
+                    <Picker Grid.Row="2"
+                            Grid.Column="1"
+                            HeightRequest="40"
+                            FontSize="14"
+                            TextColor="#172033"
+                            TitleColor="#8A94A8"
+                            BackgroundColor="#F8FAFD"
+                            IsEnabled="{Binding HasDocument}"
+                            Title="Спочатку завантажте XML"
+                            ItemsSource="{Binding AttributeValues}"
+                            SelectedItem="{Binding SelectedValue}" />
+
+                    <Label Grid.Row="3" Text="Ключове слово" VerticalOptions="Center" TextColor="#5B6780" />
+                    <Entry Grid.Row="3"
+                           Grid.Column="1"
+                           HeightRequest="40"
+                           FontSize="14"
+                           TextColor="#172033"
+                           PlaceholderColor="#8A94A8"
+                           BackgroundColor="#F8FAFD"
+                           Placeholder="Необов'язково: пошук за текстом і атрибутами"
+                           Text="{Binding Keyword}" />
+                </Grid>
+
+                <HorizontalStackLayout Spacing="10">
+                    <Button Text="Знайти"
+                            Command="{Binding SearchCommand}"
+                            BackgroundColor="#2F5BEA"
+                            TextColor="White"
+                            CornerRadius="10"
+                            HeightRequest="44"
+                            Padding="24,0" />
+
+                    <Button Text="Clear"
+                            Command="{Binding ClearCommand}"
+                            BackgroundColor="#E8EDF7"
+                            TextColor="#1C2A52"
+                            CornerRadius="10"
+                            HeightRequest="44"
+                            Padding="24,0" />
+
+                    <Button Text="Трансформувати в HTML"
+                            Command="{Binding TransformCommand}"
+                            BackgroundColor="#1F7A5A"
+                            TextColor="White"
+                            CornerRadius="10"
+                            HeightRequest="44"
+                            Padding="24,0" />
+                </HorizontalStackLayout>
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="#2F5BEA"
+                                   HorizontalOptions="Start" />
+
+                <Label Text="{Binding Status}"
+                       FontSize="13"
+                       TextColor="#5B6780" />
+            </VerticalStackLayout>
+        </Border>
+
+        
+        <ScrollView Grid.Row="2" VerticalScrollBarVisibility="Always">
+            <VerticalStackLayout Spacing="16">
+
+                <Border Padding="18,14" BackgroundColor="White" Stroke="#DFE5EF" StrokeThickness="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14" RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
+                        <Label Text="Файл:"
+                               FontAttributes="Bold"
+                               TextColor="#5B6780" />
+                        <Label Grid.Column="1"
+                               Text="{Binding FileName}"
+                               TextColor="#172033"
+                               LineBreakMode="TailTruncation" />
+
+                        <Label Grid.Row="1"
+                               Text="Дані:"
+                               FontAttributes="Bold"
+                               TextColor="#5B6780" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding DocumentInfo}"
+                               TextColor="#5B6780" />
+
+                        <Label Grid.Row="2"
+                               Grid.ColumnSpan="2"
+                               Text="Порада: «Приклад XML» відкриває вбудований conferences.xml без системного діалогу вибору файлу."
+                               FontSize="12"
+                               TextColor="#8A94A8" />
+                    </Grid>
+                </Border>
+
+                <Border Padding="20" BackgroundColor="White" Stroke="#DFE5EF" StrokeThickness="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Результат аналізу"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#172033" />
+
+                        <Editor Text="{Binding Output, Mode=OneWay}"
+                                IsReadOnly="True"
+                                AutoSize="Disabled"
+                                HeightRequest="320"
+                                FontSize="13"
+                                BackgroundColor="#F8FAFD"
+                                TextColor="#172033" />
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
