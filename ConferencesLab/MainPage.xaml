@@ -222,6 +222,56 @@
 
             </VerticalStackLayout>
         </ScrollView>
+
+        <Grid Grid.RowSpan="3"
+              IsVisible="{Binding IsReportVisible}"
+              BackgroundColor="#99000000"
+              Padding="40"
+              ZIndex="10">
+
+            <Border BackgroundColor="White"
+                    Stroke="#DFE5EF"
+                    StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <Grid RowDefinitions="Auto,*" Padding="18" RowSpacing="12">
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+                            <Label Text="HTML-звіт"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="#172033" />
+                            <Label Text="Результат XSLT-трансформації"
+                                   FontSize="13"
+                                   TextColor="#5B6780" />
+                        </VerticalStackLayout>
+
+                        <Button Grid.Column="1"
+                                Text="Закрити"
+                                Command="{Binding CloseReportCommand}"
+                                BackgroundColor="#E8EDF7"
+                                TextColor="#1C2A52"
+                                CornerRadius="10"
+                                HeightRequest="42"
+                                Padding="20,0" />
+                    </Grid>
+
+                    <Border Grid.Row="1"
+                            BackgroundColor="White"
+                            Stroke="#DFE5EF"
+                            StrokeThickness="1"
+                            Padding="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+
+                        <WebView Source="{Binding ReportSource}" />
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
     </Grid>
 
 </ContentPage>

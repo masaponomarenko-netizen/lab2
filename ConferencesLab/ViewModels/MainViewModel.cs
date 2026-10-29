@@ -31,6 +31,8 @@ public sealed class MainViewModel : INotifyPropertyChanged
     private string _documentInfo = string.Empty;
     private bool _isBusy;
     private bool _hasDocument;
+    private bool _isReportVisible;
+    private HtmlWebViewSource? _reportSource;
 
     public MainViewModel(
         XmlSearchContext searchContext,
@@ -59,6 +61,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
         SearchCommand = new Command(() => _ = RunAsync(SearchAsync));
         ClearCommand = new Command(Clear);
         TransformCommand = new Command(() => _ = RunAsync(TransformAsync));
+        CloseReportCommand = new Command(() => IsReportVisible = false);
         ExitCommand = new Command(() => _ = RunAsync(ExitAsync));
     }
 
@@ -136,6 +139,18 @@ public sealed class MainViewModel : INotifyPropertyChanged
         set => SetProperty(ref _hasDocument, value);
     }
 
+    public bool IsReportVisible
+    {
+        get => _isReportVisible;
+        set => SetProperty(ref _isReportVisible, value);
+    }
+
+    public HtmlWebViewSource? ReportSource
+    {
+        get => _reportSource;
+        set => SetProperty(ref _reportSource, value);
+    }
+
     public ICommand PickFileCommand { get; }
 
     public ICommand LoadSampleCommand { get; }
@@ -145,6 +160,8 @@ public sealed class MainViewModel : INotifyPropertyChanged
     public ICommand ClearCommand { get; }
 
     public ICommand TransformCommand { get; }
+
+    public ICommand CloseReportCommand { get; }
 
     public ICommand ExitCommand { get; }
 
@@ -326,12 +343,13 @@ public sealed class MainViewModel : INotifyPropertyChanged
 
         try
         {
-            await Launcher.Default.OpenAsync(
-                new OpenFileRequest("Звіт «Конференції»", new ReadOnlyFile(outputPath)));
+            var html = await File.ReadAllTextAsync(outputPath);
+            ReportSource = new HtmlWebViewSource { Html = html };
+            IsReportVisible = true;
         }
         catch (Exception exception)
         {
-            Status = $"HTML створено, але не вдалося відкрити браузер: {exception.Message}";
+            Status = $"HTML створено, але не вдалося відкрити перегляд: {exception.Message}";
         }
     }
 
